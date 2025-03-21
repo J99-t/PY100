@@ -508,6 +508,362 @@ rhyme_line_break = 'A pirate I was meant to be!\nTrim the sails and roam the sea
 
 #Contains Character
 char_sequence = 'TXkgaG92ZXJjcmFmdCBpcyBmdWxsIG9mIGVlbHMu'
-print('x' in char_sequence)
-print(False if char_sequence.find('z') == -1 else True)
-print(True if char_sequence.index('z') else False)
+#print('x' in char_sequence)
+#print(False if char_sequence.find('z') == -1 else True)
+#print(True if char_sequence.index('z') else False)
+
+#Is Empty?
+def is_empty(string):
+    return len(string) == 0
+
+#print(is_empty('mars'))  # False
+#print(is_empty('  '))    # False
+#print(is_empty(''))      # True
+"""
+def is_empty_or_blank(string):
+    if string.isspace() or len(string) == 0:
+        return True
+    else:
+        return False
+"""
+def is_empty_or_blank(string):
+    return string.strip() == ''
+
+#print(is_empty_or_blank('mars'))  # False
+#print(is_empty_or_blank('  '))    # True
+#print(is_empty_or_blank(''))      # True
+
+#Capitalize Words
+launch_cap = 'launch school tech & talk'
+#print(launch_cap.title())
+
+def cap_title(string):
+    return string.title()
+
+#print(cap_title('launch school tech & talk'))
+
+#Check Prefix
+def starts_with(string,prefix):
+    return string.startswith(prefix)
+
+#print(starts_with("launch", "la"))   # True
+#print(starts_with("school", "sah"))  # False
+#print(starts_with("school", "sch"))  # True
+
+#Count Substrings
+def count_substrings(string, word):
+    return string.count(word)
+
+#print(count_substrings("lemon lemon lemon", "lemon")) # 3
+#print(count_substrings("laLAlaLA", "la")) # 2
+#print(count_substrings("launch", "uno")) # 0
+
+#First Element
+def first(lst):
+    if lst:
+        return lst[0]
+    else:
+        return None
+
+#print(first(['Earth', 'Moon', 'Mars']))  # Earth
+
+#Last Element
+def last(lst):
+    if lst:
+        return lst[-1]
+    else:
+        return None
+    
+#print(last(['Earth', 'Moon', 'Mars']))  # Mars
+
+#Add + Delete
+energy = ['fossil', 'solar', 'wind', 'tidal', 'fusion']
+"""
+for i in range(0,len(energy)):
+    if energy[i] == 'fossil':
+        energy[i] = 'geothermal'
+"""
+
+energy.remove('fossil')
+energy.append('geothermal')
+#print(energy)
+
+#Alphabet
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
+list_comp = [letter for letter in alphabet]
+#print(list_comp)
+#print(list(alphabet))
+
+#Filter
+scores = [96, 47, 113, 89, 100, 102]
+counter = 0
+for score in scores:
+    if score >= 100:
+        counter +=1
+
+#print(counter)
+
+higher_than_100 = [score for score in scores if score >= 100]
+#print(len(higher_than_100))
+
+#Vocabulary
+
+vocabulary = [
+    ['happy', 'cheerful', 'merry', 'glad'],
+    ['tired', 'sleepy', 'fatigued', 'drained'],
+    ['excited', 'eager', 'enthused', 'animated'],
+]
+"""
+for words in vocabulary:
+    for word in words:
+        print(word)
+"""
+# happy
+# cheerful
+# merry
+# glad
+# tired
+# sleepy
+# etc...
+
+#Equality
+list1 = [2, 6, 4]
+list2 = [2, 6, 4]
+
+#print(list1 == list2) # this will print true since each element contains the same values 
+#but they are different in terms of where they are stored in memory
+
+#Type
+some_value1 = [0, 1, 0, 0, 1]
+some_value2 = 'I leave you my Kingdom, take good care of it.'
+
+#print(isinstance(some_value1,list))
+#print(isinstance(some_value2,list))
+
+#Travel
+destinations = ['Prague', 'London', 'Sydney', 'Belfast',
+                'Rome', 'Aruba', 'Paris', 'Bora Bora',
+                'Barcelona', 'Rio de Janeiro', 'Marrakesh',
+                'New York City']
+
+def contains(location,destinations):
+    return any(place for place in destinations if location == place)
+"""
+    for place in destinations:
+        if location == place:
+            return True
+    return False
+"""
+        
+#print(contains('Barcelona', destinations))  # True
+#print(contains('Nashville', destinations))  # False
+
+#Passcode
+passcode = ['11', 'jZ5', 'hQ3f*', '8!7g3', 'p3Fs']
+
+def create_pass(passcode):
+    password = '-'.join(passcode)
+    return password
+
+#print(create_pass(passcode))
+
+#Checking items off the grocery list
+
+grocery_list = ['paprika', 'tofu', 'garlic', 'quinoa',
+                'carrots', 'broccoli', 'hummus']
+
+#for item in range(len(grocery_list)):
+    #print(grocery_list.pop(0))
+
+#print(grocery_list)
+
+#First Car
+car = {
+       'type': 'sedan',
+       'color': 'blue',
+       'mileage': 80000
+}
+
+#print(car)
+
+#Adding the year
+car['year'] = 2003
+#print(car)
+
+#Broken Odometer
+#car.pop('mileage')
+del car['mileage']
+#print(car)
+
+#What Color
+#print(car['color'])
+
+#What's My Length?
+#print(len(car.items()))
+
+#Checking Key Existence
+student = {
+    'id': 123,
+    'grade': 'B',
+}
+
+#print(student.get('name'))
+#print(student.get('grade'))
+
+#Multiple Cars
+vehicles = {
+    'car': {
+        'type': 'sedan',
+        'color': 'blue',
+        'year': 2003
+    },
+
+    'truck': {
+        'type': 'pickup',
+        'color': 'red',
+        'year': 1998
+    }
+}
+
+#Which Collection
+car = {
+    'type':  'sedan',
+    'color': 'blue',
+    'year':  2003,
+}
+"""
+car = [['type','sedan'],
+       ['color','blue'],
+       ['year',2003]
+]
+"""
+car = [[key,value] for key,value in car.items()]
+
+#print(car)
+
+#Divided by Two
+numbers = {
+    'high':   100,
+    'medium': 50,
+    'low':    25,
+}
+half_numbers = []
+for number in numbers.values():
+    half_numbers.append(number // 2)
+
+#print(half_numbers)
+
+#Labeled Numbers
+numbers = {
+    'high':   100,
+    'medium': 50,
+    'low':    10,
+}
+"""
+for key,value in numbers.items():
+    print(f'A {key} number is {value}.')
+"""
+#Reading Error Messages
+def find_first_nonzero_among(numbers):
+    for n in numbers:
+        if n != 0:
+            return n
+
+#find_first_nonzero_among([0, 0, 1, 0, 2, 0])
+#find_first_nonzero_among(1)
+# The error raises a TypeError and argues that there are too many arguments passed into the parameters
+# The second line raises another type error meaning that the wrong type was passed into the function
+
+# Weather Forecast
+import random
+
+def predict_weather():
+    sunshine = random.choice([True, False]) #The values presented in the argument are strings which are always considered truthy
+
+    if sunshine:
+        print("Today's weather will be sunny!")
+    else:
+        print("Today's weather will be cloudy!")
+
+#predict_weather()
+
+#Multiply By Five
+def multiply_by_five(n):
+    return n * 5
+
+#print("Hello! Which number would you like to multiply by 5?")
+#number = int(input())
+
+#print(f"The result is {multiply_by_five(number)}!") 
+# The output result is because input is automatically converted to a string so you must convert it to an integer
+# using explicit coercion
+
+#Pets
+pets = { 'cat': 'pepe', 'dog': ['sparky', 'fido'], 'fish': 'oscar' }
+
+pets['dog'].append('bowser')
+
+#print(pets)  # Output: {'cat': 'pepe', 'dog': 'bowser', 'fish': 'oscar'}
+
+#Confucius Says
+def get_quote(person):
+    if person == 'Yoda':
+        return 'Do. Or do not. There is no try.'
+    if person == 'Confucius':
+        return 'I hear and I forget. I see and I remember. I do and I understand.'
+    if person == 'Einstein':
+        return 'Do not worry about your difficulties in Mathematics. I can assure you mine are still greater.'
+
+#print('Confucius says:')
+#print('"' + get_quote('Confucius') + '"') #The function returns none since you never explicitly told it to return anything
+
+#Populate List
+numbers = []
+
+for i in range(1,6): # You have to specify the starting point since range starts from 0 and ends the number exclusive
+    numbers.append(i)
+
+#print(numbers)
+
+#Dictionary Access
+info = {'name': 'Srdjan', 'age': 38}
+
+#print(info.get('city', 'Unknown'))
+
+#Matrix
+import copy
+sub_list = ["-", "-", "-"]
+matrix = []
+
+for _ in range(3):
+    matrix.append(sub_list.copy()) # Create a shallow copy to make the nested list reference different
+
+matrix[0][0] = "X"
+#print(matrix) # [['X', '-', '-'], ['X', '-', '-'], ['X', '-', '-']]
+
+#Find Maximum
+def find_maximum(numbers):
+    if not numbers:
+        return None
+    max_number = numbers[0]
+    for number in numbers:
+        if number > max_number:
+            max_number = number
+    return max_number
+
+#print(find_maximum([45, 3, 10, 98, 22]))  # Expected 98
+#print(find_maximum([-1, 0, 5, 3]))         # Expected 5
+#print(find_maximum([-10, -3, -20, -2]))   # Expected -2
+
+#Digit Product
+def digit_product(str_num):
+    digits = [int(n) for n in str_num]
+    product = 1
+
+    for digit in digits:
+        product *= digit
+
+    return product
+
+result = digit_product('12345')
+

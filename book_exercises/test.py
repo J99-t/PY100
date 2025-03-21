@@ -314,8 +314,8 @@ def create_account():
 deposit, withdraw, check_balance, transaction_history = create_account()
 deposit(500)
 
-print(check_balance())
-print(transaction_history())
+#print(check_balance())
+#print(transaction_history())
 """
 Balance: 500
 Balance: 800
@@ -323,3 +323,65 @@ Insufficient funds. Balance: 800
 Balance: 650
 Transaction history: [('deposit', 500), ('deposit', 300), ('withdraw', 150)]
 """
+
+#Write a function that takes a string and returns a new string with all vowels removed.
+
+def remove_vowels(word):
+    vowels = ('a','e','i','o','u')
+    new_word = ''
+    for letter in word:
+        if letter not in vowels:
+            new_word += letter
+    return new_word
+
+#print(remove_vowels("hello world")) #should return "hll wrld"
+
+#Create a function that calculates the sum of all even numbers in a list.
+def sum_even_numbers(lst):
+    new_list = []
+    for number in lst:
+        if number % 2 == 0:
+            new_list.append(number)
+    return sum(new_list)
+
+#print(sum_even_numbers([1, 2, 3, 4, 5, 6])) #should return 12 (2 + 4 + 6)
+
+#Create a function that takes a dictionary with string keys and integer values, and returns a new dictionary where the keys 
+# with even values are kept and keys with odd values are removed.
+"""
+def filter_even_values(dict):
+    new_dict = {}
+    for key,value in dict.items():
+        if value % 2 == 0:
+            new_dict[key] = value
+    return new_dict
+"""
+def filter_even_values(dict):
+    new_dict = {key: value for key, value in dict.items() if value % 2 == 0}
+    return new_dict
+
+#print(filter_even_values({"a": 1, "b": 2, "c": 3, "d": 4})) #should return {"b": 2, "d": 4}
+
+#Write a function that takes a string and returns it with the first and last characters swapped.
+def swap_first_last(word):
+    if len(word) < 2:
+        print(word)
+    else:
+        new_word = word[-1] + word[1:-1] + word[0]
+        print(new_word)
+
+swap_first_last("Python") #should return "nythoP"
+swap_first_last("a") #should return "a"
+
+#Create a function that takes a list of numbers and returns a new list containing only the numbers that are divisible by 3.
+
+def divisible_by_three(lst):
+    new_list = []
+    for number in lst:
+        if number % 3 == 0:
+            new_list.append(number)
+    return new_list
+
+#print(divisible_by_three([1, 2, 3, 4, 5, 6, 9, 10])) #should return [3, 6, 9]
+
+#Write a program that generates a dictionary where the keys are numbers from 1 to 10 and the values are the squares of the keys.

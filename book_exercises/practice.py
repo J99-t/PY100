@@ -707,3 +707,125 @@ prices = [5, 3, 4, 7, 1200, 150]
 product_price = {products[i]: prices[i] for i in range (len(prices)) if prices[i] > 10}
 #print(product_price)
 
+#Write a nested function that increments a counter using a nonlocal variable.
+
+def create_counter():
+    counter = 0
+    def increment_counter():
+        nonlocal counter
+        counter += 1
+        return counter
+    return increment_counter()
+
+#print(create_counter())
+
+#Create a function that uses both global and nonlocal variables to track different levels of information.
+total_calls = 0
+
+def create_calculator():
+    result = 0
+    
+    def add(n):
+        nonlocal result
+        global total_calls
+        result += n
+        total_calls += 1
+        return result
+        
+    def subtract(n):
+        nonlocal result
+        global total_calls
+        result -= n
+        total_calls += 1
+        return result
+    
+    def get_result():
+        return result
+    
+    return {'add': add, 'subtract': subtract, 'get_result': get_result}
+
+calc = create_calculator()
+#print(calc['add'](5))
+#print(calc['subtract'](7))
+#print(calc['get_result'])
+
+       # Your code here:
+       # 1. Create a local variable called result with initial value 0
+       # 2. Define nested functions add(n) and subtract(n) that modify result using nonlocal
+       # 3. Both functions should also increment the global total_calls variable
+       # 4. Return a dictionary with the add and subtract functions and a way to get the current result
+
+#Implement a nested function structure for a simple banking system that tracks deposits, withdrawals, and 
+# enforces a minimum balance using nonlocal variables.
+def create_account(initial_balance=0, minimum_balance=0):
+    balance = initial_balance
+
+    def deposit(amount):
+        nonlocal balance
+        balance += amount
+        return balance
+
+    def withdraw(amount):
+        nonlocal balance
+        if minimum_balance < (balance - amount):
+            balance -= amount
+            return balance
+        else:
+            return 'Insufficient Balance'
+
+    def get_balance():
+        return balance
+
+    return {'deposit' : deposit, 'withdraw' : withdraw, 'get_balance': get_balance}
+
+       # Your code here:
+       # 1. Use a nonlocal balance variable to track the account balance
+       # 2. Create deposit(amount) and withdraw(amount) nested functions
+       # 3. withdraw should prevent withdrawals that would bring balance below minimum_balance
+       # 4. Add a get_balance() function that returns the current balance
+       # 5. Return a dictionary with all three functions
+   
+   # Example usage:
+account = create_account(100, 50)
+#print(account['deposit'](25))  # balance is now 125
+#print(account['withdraw'](70))  # balance is now 55
+#print(account['withdraw'](10))  # balance is now 45
+success = account['withdraw'](50)  # should fail and return False (would go below minimum)
+
+#Write a function that takes a sentence as input and returns a new string where each word is reversed, 
+# but the order of words in the sentence remains the same. For example, "Python is fun" should become "nohtyP si nuf".
+def reverse(sentence):
+    words = sentence.split()
+    for word in words:
+        for letter in range(len(word)-1,-1,-1):
+            print(word[letter], end='')
+        print(' ', end='')
+
+#reverse("Python is fun")
+
+#Create a function that counts the occurrences of each character in a string and returns a dictionary with characters as keys and 
+# counts as values. The function should ignore case (treat 'A' and 'a' as the same character) and exclude spaces.
+
+def count_letters(string):
+    s = string.casefold().replace(' ', '')
+    return {s[letter]: s.count(s[letter]) for letter in range(len(s))}
+
+#print(count_letters('Hello WorLd'))
+
+#Implement a function that finds the longest palindromic substring in a given string. 
+# A palindrome reads the same backwards as forwards. For example, in the string "babad", 
+# the longest palindromic substring is "bab" or "aba".
+
+def longest_palindrome(substring):
+    longest = ''
+    for i in range(0,len(substring)):
+        for j in range(len(substring)-1,-1,-1):
+            if substring[j] != substring[i]:
+                longest = ''
+            elif substring[j] == substring[i]:
+                longest += substring[i]
+    return longest
+
+#print(longest_palindrome('rbacecar'))
+   # Example input: "rbacecar"
+   # Expected output: "cec" (or "aceca" is also valid)
